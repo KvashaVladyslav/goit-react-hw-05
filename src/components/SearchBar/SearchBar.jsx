@@ -1,5 +1,6 @@
 import { Formik, Form, Field } from "formik";
-import toast, {Toaster} from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import css from "./SearchBar.module.css"
 
 export default function SearchBar({ onSubmit }) {
     
@@ -17,15 +18,16 @@ export default function SearchBar({ onSubmit }) {
                 }
                 actions.resetForm()
             }}>
-                <Form>
+                <Form className={css.form}>
                     <Field
+                        className={css.input}
                         type="text"
                         name="query"
                         autoComplete="off"
                         autoFocus
                         placeholder="Search movies"/>
-                    <button type="submit">Search</button>
-                    <Toaster toastOptions={{style: {background: "yellow", color: "black"}}}/>
+                    <button className={css.button} type="submit">Search</button>
+                    <Toaster toastOptions={{style: {background: "#e9a8a8", color: "black"}}}/>
                 </Form>
             </Formik>
         </div>

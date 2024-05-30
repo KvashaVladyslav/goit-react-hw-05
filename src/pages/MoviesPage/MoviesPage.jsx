@@ -6,6 +6,7 @@ import Loader from "../../components/Loader/Loader";
 import toast from "react-hot-toast";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import { useLocation, useSearchParams } from "react-router-dom";
+import css from "./MoviesPage.module.css"
 
 
 export default function MoviesPage() {
@@ -56,7 +57,7 @@ export default function MoviesPage() {
     }
 
     return (
-        <div>
+        <div  className={css.container}>
             <SearchBar onSubmit={handleSearch} />
             {loader && <Loader />}
             {movies.length > 0 && !error && <MovieList films={movies} location={{ from: location}} />}

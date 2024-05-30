@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import MovieCastItem from "../MovieCastItem/MovieCastItem";
+import MovieCastItems from "../MovieCastItem/MovieCastItems";
 import { getCastList } from "../../api";
+import css from "./MovieCast.module.css"
 
 export default function MovieCast() {
     const { filmId } = useParams()
@@ -18,8 +19,8 @@ export default function MovieCast() {
 
     return (
         <div>
-            {filmCast.length === 0 && <p>There is not any information about the film cast</p>}
-            <ul><MovieCastItem cast={filmCast} /></ul>
+            {filmCast.length !== 0 && <MovieCastItems cast={filmCast} />}
+            {filmCast.length === 0 && <p className={css.noCast}>There is not any information about the film cast</p>}
         </div>
     )
 }

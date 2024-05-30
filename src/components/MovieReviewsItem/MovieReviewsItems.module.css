@@ -1,0 +1,63 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 1230px;
+    margin: 0 auto;
+}
+
+.listItem {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.image {
+    width: 200px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.profileInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    width: 200px;
+}
+
+.textContent {
+    font-size: 14px;
+}
+
+.icon {
+    height: 30px;
+    width: 30px;
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}

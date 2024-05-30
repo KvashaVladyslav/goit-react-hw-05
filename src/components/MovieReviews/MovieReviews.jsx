@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getFilmReviews } from "../../api";
-import ReviewItem from "../MovieReviewsItem/MovieReviewsItem";
+import ReviewItems from "../MovieReviewsItem/MovieReviewsItems";
+import css from "./MovieReviews.module.css"
+
 
 export default function MovieReviews() {
     const { filmId } = useParams();
@@ -19,8 +21,9 @@ export default function MovieReviews() {
     }, [filmId])
     
     return (
-        <div>{filmReviews.length === 0 && <p>There is not reviews about this film yet</p>}
-            <ul><ReviewItem review={filmReviews} /></ul>
+        <div>
+            {filmReviews.length !== 0 && <ReviewItems review={filmReviews} />}
+            {filmReviews.length === 0 && <p className={css.noReviews}>There is not reviews about this film yet</p>}
         </div>
         
     )

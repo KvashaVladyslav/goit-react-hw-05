@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import css from "./App.module.css"
+
 
 const Navigation = lazy(() => import("../Navigation/Navigation.jsx"))
 const Loader = lazy(() => import("../Loader/Loader.jsx"))
@@ -13,7 +15,7 @@ const NotFoundPage = lazy(() => import('../../pages/NotFoundPage/NotFoundPage.js
 
 export default function App() {
     return (
-        <div>
+        <div className={css.container}>
             <Navigation />
             <Suspense fallback={<Loader />}>
                 <Routes>

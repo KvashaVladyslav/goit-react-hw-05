@@ -5,6 +5,7 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { FcFilmReel } from "react-icons/fc";
 import { MdOutlineStarRate } from "react-icons/md";
 import { BsCalendar2DateFill } from "react-icons/bs";
+import css from "./MovieDetailsPage.module.css"
 
 
 export default function MovieDetailsPage() {
@@ -28,21 +29,27 @@ export default function MovieDetailsPage() {
     const defaultImage = "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg"
 
     return (
-        <div>
-            <Link to={goBack.current}><IoArrowBackCircleOutline />Go back</Link>
-            <div>
-                <img src={poster_path !== null ? `${filmImage}${poster_path}` : defaultImage} />
-                <div>
-                    <h2><FcFilmReel />{title}</h2>
-                    <ul>Genres: {genres && genres.map(({id,name}) => <li key={id}>{name}</li>)}</ul>
-                    <p>Tagline: {tagline}</p>
-                    <p>Overview: {overview}</p>
-                    <p><MdOutlineStarRate /> : {vote_average}</p>
-                    <p><BsCalendar2DateFill />: {release_date}</p>
+        <div className={css.container}>
+            <Link className={css.goBack} to={goBack.current}><IoArrowBackCircleOutline className={css.goBackIcon} />Go back</Link>
+            <div className={css.movieInfo}>
+                <img className={css.image} src={poster_path !== null ? `${filmImage}${poster_path}` : defaultImage} />
+                <div className={css.movieDetailsWrapper}>
+                    <div className={css.movieDetails}>
+                        <h2 className={css.title}><FcFilmReel />{title}</h2>
+                        {genres && genres.length !== 0 && <ul className={css.genresList}>Genres: {genres && genres.map(({ id, name }) => <li className={css.genresListItem} key={id}>{name}</li>)}</ul>}
+                        {tagline !== "" && <h3>Tagline: <p className={css.textInfo}>{tagline}</p></h3>}
+                        {overview !== "" && <h3>Overview: <p className={css.textInfo}>{overview}</p></h3>}
+                        {vote_average !== null && <h3><p className={css.textInfo}><MdOutlineStarRate className={css.icon} />: {vote_average}</p></h3>}
+                        {release_date !== "" && <h3><p className={css.textInfo}><BsCalendar2DateFill className={css.icon} />: {release_date}</p></h3>}
+                    </div>
+                    <div>
+                        <div className={css.linksContainer}>
+                            <NavLink className={css.castReviewLink} to={`reviews`}>Reviews</NavLink>
+                            <NavLink className={css.castReviewLink} to={`cast`}>Cast</NavLink>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <NavLink to={`reviews`}>Reviews</NavLink>
-            <NavLink to={`cast`}>Cast</NavLink>
             <Outlet/>
         </div>
     )

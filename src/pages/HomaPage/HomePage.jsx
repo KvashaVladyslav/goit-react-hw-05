@@ -4,6 +4,7 @@ import MovieList from "../../components/MovieList/MovieList"
 import { useLocation } from "react-router-dom"
 import NotFoundPage from "../NotFoundPage/NotFoundPage"
 import Loader from "../../components/Loader/Loader"
+import css from "./HomePage.module.css"
 
 export default function HomaPage() {
     const [trendFilms, setTrendFilms] = useState([])
@@ -29,7 +30,7 @@ export default function HomaPage() {
     }, [])
 
     return (
-        <div>
+        <div className={css.container}>
             <h1>Trending Movies</h1>
             {loader && <Loader />}
             {trendFilms.length > 0 && !loader && !error && <MovieList films={trendFilms} location={{from: location}} />}
